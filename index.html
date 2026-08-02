@@ -144,9 +144,12 @@
   .scard h4{font-family:var(--disp);font-weight:600;font-size:.9rem;margin:0;color:var(--text)}
 
   /* PROJECTS */
-  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
-  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column}
+  .proj-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;-webkit-overflow-scrolling:touch}
+  .proj-grid::-webkit-scrollbar{height:8px}
+  .proj-grid::-webkit-scrollbar-track{background:var(--line);border-radius:8px}
+  .proj-grid::-webkit-scrollbar-thumb{background:var(--accent);border-radius:8px}
+  .pcard{flex:0 0 320px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column}
+  @media(max-width:760px){.pcard{flex-basis:80%}}
   .pcard:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 28px rgba(108,60,240,.14)}
   .ptag{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.08em;margin-bottom:10px}
   .pcard h4{font-family:var(--disp);font-weight:600;font-size:1.08rem;margin-bottom:8px}
@@ -370,6 +373,18 @@
     <div class="kicker">My Work</div>
     <h2 class="sec-title">Projects</h2>
     <div class="proj-grid">
+
+      <div class="pcard reveal">
+        <div class="ptag">NLP</div>
+        <h4>Cognate &amp; False-Friend Detection for Dravidian Languages (Kannada–Telugu)</h4>
+        <p>NLP pipeline labeling Kannada–Telugu word pairs as cognate / false friend / unrelated, combining orthographic, phonetic, and semantic features with multilingual embeddings (LaBSE/MuRIL). 3-way classifier over ~226K mined word pairs, evaluated with macro-F1 and feature ablations.</p>
+      </div>
+
+      <div class="pcard reveal">
+        <div class="ptag">FORECASTING</div>
+        <h4>Global Country-wise Electricity Demand Forecasting</h4>
+        <p>Monthly national electricity demand (GWh) forecast across 52 countries, comparing six ML models (Linear Regression, Decision Tree, Random Forest, AdaBoost, XGBoost, neural network); XGBoost achieved the lowest test RMSE. Cleaned ~120K IEA records to 43,500 with engineered temporal and country features.</p>
+      </div>
 
       <div class="pcard reveal">
         <div class="ptag">REGRESSION</div>
